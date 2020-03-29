@@ -2,15 +2,16 @@
 const db = require("../db/dbConfig");
 
 exports.createTodo = async (req, res) => {
-	const data = req.body;
+  const data = req.body;
+  
   try {
-		const sql = `
-			INSERT INTO todo(todo_desc, is_completed) 
-			VALUES
-			('${data.todo_desc}', ${data.is_completed})`;
+	const sql = 
+		`INSERT INTO todo(todo_desc, is_completed) 
+		VALUES 
+		('${data.todo_desc}', ${data.is_completed})`;
 		
-		db.dbConnection.query(sql);
-		res.status(201).send(data);
+    db.dbConnection.query(sql);
+    res.status(201).send(data);
   } catch (error) {
     if (error) throw error;
   }
