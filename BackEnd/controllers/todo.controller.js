@@ -4,8 +4,6 @@ const db = require("../db/dbConfig");
 exports.createTodo = async (req, res) => {
 	const data = req.body;
   try {
-		//db.dbConnection;
-
 		const sql = `
 			INSERT INTO todo(todo_desc, is_completed) 
 			VALUES
