@@ -8,6 +8,8 @@ require("dotenv").config({ path: "./config/.env" });
 app.use(cors());
 app.use(express.json());
 
+require("./routes/todo.routes")(app);
+
 const port = process.env.PORT;
 
 app.listen(port, () => {
