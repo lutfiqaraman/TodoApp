@@ -66,4 +66,19 @@ exports.updateTodo = (req, res) => {
 };
 
 // Delete a to-do task
-exports.deleteTodo = () => {};
+exports.deleteTodo = (req, res) => {
+  try {
+    const id = req.params.id;
+
+    const sql = 
+      "DELETE FROM todo WHERE id = ?";
+    
+    db.dbConnection.query(sql, id, (err, result) => {
+      if (err) throw res.status(400).send(err.message);
+        res.status(200).send({ result, msg: "To-do has been deleted !" });
+    });
+    
+  } catch (error) {
+    if (error) throw error;
+  }
+};
