@@ -47,7 +47,23 @@ exports.getTodo = async(req, res) => {
 };
 
 // Update a to-do task
-exports.updateTodo = () => {};
+exports.updateTodo = (req, res) => {
+  try {
+    const id = req.params.id;
+    const data = req.body;
+    const updatedData = [data.todo_desc, data.is_completed, id];
+
+    const sql = 
+      "UPDATE todo SET todo_desc = ?, is_completed = ? WHERE id = ?";
+    
+    db.dbConnection.query(sql, updatedData, (err, result) => {
+      if (err) throw res.status(400).send(err.message);
+      res.status(200).send({ result, msg: "To-do has been updated !" });
+    });
+  } catch (error) {
+    if (error) throw error;
+  }
+};
 
 // Delete a to-do task
 exports.deleteTodo = () => {};

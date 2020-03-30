@@ -5,5 +5,6 @@ module.exports = app => {
     
     app.get("/todos", toDO.getAlltodos);
     app.get("/todos/todo/:id", toDO.getTodo);
-    
+
+    app.put("/todos/todo/:id", toDO.updateTodo);
 };
