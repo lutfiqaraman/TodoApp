@@ -32,7 +32,19 @@ exports.getAlltodos = async(req, res) => {
 };
 
 // Get a to-do task
-exports.getTodo = () => {};
+exports.getTodo = async(req, res) => {
+  try {
+    const id = req.params.id;
+    const sql = "SELECT * FROM todo where id = ?";
+  
+    db.dbConnection.query(sql, id, (err, result, fields) => {
+      if (err) throw res.status(400).send(err.message);
+      res.status(200).send({ result, fields });
+    });
+  } catch (error) {
+    if (error) throw error;
+  }
+};
 
 // Update a to-do task
 exports.updateTodo = () => {};
