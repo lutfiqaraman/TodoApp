@@ -10,9 +10,15 @@ import { FooterComponent } from './components/footer/footer.component';
 // Home Component
 import { HomeComponent } from './components/home/home.component';
 
+// Todo Component
+import { TodosComponent } from './components/todos/todos.component';
+import { TodoComponent } from './components/todos/todo/todo.component';
+import { TodolistComponent } from './components/todos/todolist/todolist.component';
+
 
 const routes: Routes = [
-  {path: '', component: HomeComponent}
+  {path: '', component: HomeComponent},
+  {path: 'todos', component: TodosComponent}
 ];
 
 @NgModule({
@@ -24,5 +30,8 @@ export class AppRoutingModule { }
 export const routingComponents = [
   NavbarComponent,
   HomeComponent,
-  FooterComponent
+  FooterComponent,
+  TodosComponent,
+  TodoComponent,
+  TodolistComponent
 ];

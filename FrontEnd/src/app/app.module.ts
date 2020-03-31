@@ -10,10 +10,11 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 
 
+
 @NgModule({
   declarations: [
     AppComponent,
-    routingComponents,
+    routingComponents
   ],
   imports: [
     BrowserModule,
