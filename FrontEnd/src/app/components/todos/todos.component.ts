@@ -8,13 +8,14 @@ import { JsonPipe } from '@angular/common';
   styleUrls: ['./todos.component.css']
 })
 export class TodosComponent implements OnInit {
-  todos: object;
+  todo: object = [];
 
   constructor(private todosservice: TodosService) { }
 
   ngOnInit(): void {
     this.todosservice.getTodos().subscribe((data) => {
-      this.todos = data;
+      this.todo = data;
+      console.log(JSON.stringify(this.todo));
     });
   }
 
