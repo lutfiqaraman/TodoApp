@@ -1,5 +1,5 @@
 export class TODO {
     id: number;
-    tododesc = '';
+    description = '';
     iscompleted: boolean;
 }

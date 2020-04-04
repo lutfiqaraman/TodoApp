@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { TodosService } from 'src/app/services/todos.service';
-import { JsonPipe } from '@angular/common';
+import { TODO } from 'src/app/models/todo';
 
 @Component({
   selector: 'app-todos',
@@ -8,15 +8,18 @@ import { JsonPipe } from '@angular/common';
   styleUrls: ['./todos.component.css']
 })
 export class TodosComponent implements OnInit {
-  todo: object = [];
+  todolist: TODO[] = [];
 
-  constructor(private todosservice: TodosService) { }
+  constructor(private todoservice: TodosService) { }
 
   ngOnInit(): void {
-    this.todosservice.getTodos().subscribe((data) => {
-      this.todo = data;
-      console.log(this.todo);
-    });
+    this.getAllTodos();
+  }
+
+  getAllTodos() {
+    this.todoservice
+      .getAllTodos()
+      .subscribe(todos => this.todolist = todos);
   }
 
 }

@@ -1,5 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { TODO } from '../models/todo';
+import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators' ;
 
 @Injectable({
   providedIn: 'root'
@@ -8,15 +11,16 @@ export class TodosService {
 
   constructor(private http: HttpClient) { }
 
-  getTodos() {
+  getAllTodos(): Observable<TODO[]>{
     const headers = new HttpHeaders();
+    const url = 'http://localhost:3000/todos';
+
     headers.append('Content-Type', 'application/json');
 
-    const url = 'http://localhost:3000/todos';
-    const header = { headers };
+    const todolist = this.http
+      .get<TODO[]>(url)
+      .pipe(map((data: any) => data.result));
 
-    const result = this.http.get(url, header);
-
-    return result;
+    return todolist;
   }
 }

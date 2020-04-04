@@ -4,8 +4,8 @@ const cors = require("cors");
 
 require("dotenv").config({ path: "./config/.env" });
 
-//Middleware
-app.use(cors());
+let corsOptions = { origin: ["http://localhost:4200", "http://localhost:4000"] };
+app.use(cors(corsOptions));
 app.use(express.json());
 
 require("./routes/todo.routes")(app);
